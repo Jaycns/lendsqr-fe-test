@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap");
+@font-face {
+  font-family: "avenir";
+  src: url("./avenir_ff/AvenirLTStd-Black.otf") format("otf"),
+    url("./avenir_ff/AvenirLTStd-Book.otf") format("otf"),
+    url("./avenir_ff/AvenirLTStd-Roman.otf") format("otf");
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

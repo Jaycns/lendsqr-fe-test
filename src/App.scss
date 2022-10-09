@@ -1,0 +1,92 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  .img-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    flex-basis: 50%;
+    .logo {
+      width: 173px;
+      margin: 4rem;
+    }
+    .canvas {
+      width: 800px;
+      margin-left: 2rem;
+    }
+  }
+  .flex-box {
+    display: flex;
+    justify-content: flex-start;
+    // border: 2px solid rgba(84, 95, 125, 0.15);
+    box-shadow: 0px 0px 50px rgba(84, 95, 125, 0.07);
+    height: 100vh;
+    flex-basis: 50%;
+    padding: 12rem 6rem;
+    img {
+      width: 800px;
+      margin-left: -2rem;
+    }
+  }
+  .login-box {
+    width: 32rem;
+    color: #213f7d;
+
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+    }
+    p {
+      font-size: 20px;
+      font-weight: 300;
+      margin-top: 1rem;
+    }
+    form {
+      margin-top: 4rem;
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+      span {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #39cdcc;
+      }
+      button {
+        width: 100%;
+        color: #fff;
+        background-color: #39cdcc;
+        padding: 1.2rem;
+        border: none;
+        text-transform: uppercase;
+        border-radius: 8px;
+      }
+    }
+    .form-input {
+      position: relative;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      border: 2px solid rgba(84, 95, 125, 0.15);
+      input {
+        width: 90%;
+        padding: 1.1rem 0.8rem;
+        border-radius: 5px;
+        font-size: 14px;
+        border: none;
+        outline: none;
+        color: #213f7d;
+        &::placeholder {
+          opacity: 0.6;
+        }
+        // outline: #213f7d;
+        // outline-style: inset;
+      }
+      span {
+        margin-left: -1rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
