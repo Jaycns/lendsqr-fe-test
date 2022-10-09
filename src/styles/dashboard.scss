@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
+.topNav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 2.5rem;
+  padding-right: 3.75rem;
+  width: 100%;
+  height: 6.25rem;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  .logo {
+    width: 144px;
+  }
+  .flex-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 10.5rem;
+  }
+  .search-box {
+    width: 25rem;
+    display: flex;
+
+    input {
+      padding: 0.75rem 1.25rem;
+      width: 90%;
+      outline: none;
+      border-radius: 30px;
+      color: #545f7d;
+      border-radius: 8px 0px 0px 8px;
+      border: 1px solid rgba(33, 63, 125, 0.4);
+      border-right: none;
+
+      &::placeholder {
+        opacity: 0.5;
+      }
+    }
+    .search-icon {
+      width: 3.5rem;
+      background: #39cdcc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0px 8px 8px 0px;
+    }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #213f7d;
+    .docs {
+      text-decoration: underline;
+      font-family: roboto, arial, helvetica;
+      font-size: 16px;
+      margin-right: 3rem;
+    }
+    .bell {
+      margin-right: 1.875rem;
+    }
+    .avatar {
+      margin-right: 10px;
+    }
+    .admin {
+      font-size: 16px;
+      font-family: "Work Sans", sans-serif;
+      margin-right: 4px;
+    }
+  }
+}

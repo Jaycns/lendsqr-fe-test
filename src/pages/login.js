@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from "react";
 import logo from "../assets/logo.svg";
 import canvas from "../assets/canvas.svg";
-import "../App.scss";
+import "../styles/login.scss";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [keyShown, setKeyShown] = useState(false);
@@ -33,7 +34,9 @@ function Login() {
                 </div>
               </div>
               <span>Forgot password?</span>
-              <button>Log in</button>
+              <Link to="/dashboard">
+                <button>Log in</button>
+              </Link>
             </form>
           </div>
         </div>
