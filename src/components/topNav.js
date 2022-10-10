@@ -20,7 +20,7 @@ function TopNav() {
           <p className="docs">Docs</p>
           <img src={bell} alt="bell" className="bell" />
           <img src={avatar} alt="avatar" className="avatar" />
-          <p className="admin">Adedji</p>
+          <p className="admin">Adedeji</p>
           <img src={dropdown} alt="icon" className="dropdown" />
         </div>
       </div>
