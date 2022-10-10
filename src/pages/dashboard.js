@@ -6,6 +6,7 @@ import activeUser from "../assets/icons/main/active user.svg";
 import loans from "../assets/icons/main/user loan.svg";
 import savings from "../assets/icons/main/savings.svg";
 import filter from "../assets/icons/main/filter.svg";
+import picker from "../assets/icons/main/picker.svg";
 
 function Dashboard() {
   return (
@@ -35,29 +36,57 @@ function Dashboard() {
               <h2>102,453</h2>
             </div>
           </div>
+
           <table className="table">
             <thead>
               <tr>
                 <th>
-                  Organization <img src={filter} alt="filter" />
+                  <h4>
+                    Organization <img src={filter} alt="filter" />
+                  </h4>
                 </th>
                 <th>
-                  Username <img src={filter} alt="filter" />
+                  {" "}
+                  <h4>
+                    Username <img src={filter} alt="filter" />
+                  </h4>
                 </th>
                 <th>
-                  Email <img src={filter} alt="filter" />
+                  <h4>
+                    Email <img src={filter} alt="filter" />
+                  </h4>
                 </th>
                 <th>
-                  Phone Number <img src={filter} alt="filter" />
+                  <h4>
+                    {" "}
+                    Phone Number <img src={filter} alt="filter" />
+                  </h4>
                 </th>
                 <th>
-                  Data Joined <img src={filter} alt="filter" />
+                  <h4>
+                    Data Joined <img src={filter} alt="filter" />
+                  </h4>
                 </th>
                 <th>
-                  Status <img src={filter} alt="filter" />
+                  <h4>
+                    Status <img src={filter} alt="filter" />
+                  </h4>
                 </th>
               </tr>
             </thead>
+            <tbody>
+              <tr>
+                <td>Lendsqr</td>
+                <td>Adedeji</td>
+                <td>adedeji@lendsqr.com</td>
+                <td>08078903721</td>
+                <td>May 15, 2020 10:00 AM</td>
+                <td>Inactive</td>
+                <td>
+                  <img src={picker} alt="picker" />
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </Layout>
