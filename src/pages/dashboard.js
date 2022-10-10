@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/dashboard.scss";
 import Layout from "../components/layout";
 import user from "../assets/icons/main/people.svg";
@@ -6,9 +6,11 @@ import activeUser from "../assets/icons/main/active user.svg";
 import loans from "../assets/icons/main/user loan.svg";
 import savings from "../assets/icons/main/savings.svg";
 import filter from "../assets/icons/main/filter.svg";
-import picker from "../assets/icons/main/picker.svg";
+import UserTable from "../components/usertable";
+import AppContext from "../context/context";
 
 function Dashboard() {
+  const { usersInpage } = useContext(AppContext);
   return (
     <>
       <Layout>
@@ -75,17 +77,9 @@ function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Lendsqr</td>
-                <td>Adedeji</td>
-                <td>adedeji@lendsqr.com</td>
-                <td>08078903721</td>
-                <td>May 15, 2020 10:00 AM</td>
-                <td>Inactive</td>
-                <td>
-                  <img src={picker} alt="picker" />
-                </td>
-              </tr>
+              {usersInpage.map((item, index) => {
+                return <UserTable key={index} item={item} />;
+              })}
             </tbody>
           </table>
         </div>

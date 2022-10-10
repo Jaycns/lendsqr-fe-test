@@ -136,9 +136,10 @@
     justify-content: flex-start;
     gap: 1.625rem;
     margin-top: 2.5rem;
+    width: 74.8rem;
   }
   .card {
-    width: 15rem;
+    width: 18rem;
     height: 10rem;
     padding: 1.25rem 1.875rem;
     justify-content: flex-start;
@@ -162,11 +163,12 @@
     }
   }
   table {
-    width: 64.8rem;
+    width: 74.8rem;
     background-color: #fff;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
     text-align: left;
     padding: 1.875rem;
+    margin-top: 2.5rem;
     th h4 {
       display: flex;
       gap: 0.5rem;
@@ -175,6 +177,18 @@
       text-transform: uppercase;
       img {
         width: 16px;
+      }
+    }
+
+    tbody {
+      padding: 1.375rem;
+
+      td {
+        font-size: 14px;
+        font-weight: 400;
+        color: #545f7d;
+        height: 3.75rem;
+        border-bottom: 1px solid rgba(33, 63, 125, 0.1);
       }
     }
   }
