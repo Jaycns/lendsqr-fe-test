@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useCallback } from "react";
+import React, { createContext, useState, useEffect } from "react";
 const AppContext = createContext();
 export const AppProvider = (props) => {
   const [users, setUsers] = useState([]);
@@ -17,16 +17,19 @@ export const AppProvider = (props) => {
       console.log(err);
     }
   }, []);
-  let phone = "297.557.0046 x7801";
- 
+
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 9;
   const lastIndex = currentPage * usersPerPage;
   const initialIndex = lastIndex - usersPerPage;
   const usersInpage = users.slice(initialIndex, lastIndex);
-  const stateActions = {};
+  const stateActions = {
+    setCurrentPage,
+  };
   return (
-    <AppContext.Provider value={{ usersInpage, ...stateActions }}>
+    <AppContext.Provider
+      value={{ usersPerPage, currentPage, usersInpage, users, ...stateActions }}
+    >
       {props.children}
     </AppContext.Provider>
   );

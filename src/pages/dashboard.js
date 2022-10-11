@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import "../styles/dashboard.scss";
 import Layout from "../components/layout";
 import user from "../assets/icons/main/people.svg";
@@ -8,9 +8,19 @@ import savings from "../assets/icons/main/savings.svg";
 import filter from "../assets/icons/main/filter.svg";
 import UserTable from "../components/usertable";
 import AppContext from "../context/context";
+import Pagination from "../components/pagination";
 
 function Dashboard() {
   const { usersInpage } = useContext(AppContext);
+  const [filterForm, setFilterForm] = useState(false);
+  const handleFilterForm = useCallback(
+    () => setFilterForm(true),
+    [setFilterForm]
+  );
+  const handleFilterFormClose = useCallback(
+    () => setFilterForm(false),
+    [setFilterForm]
+  );
   return (
     <>
       <Layout>
@@ -38,17 +48,53 @@ function Dashboard() {
               <h2>102,453</h2>
             </div>
           </div>
-
           <table className="table">
             <thead>
               <tr>
                 <th>
                   <h4>
-                    Organization <img src={filter} alt="filter" />
+                    Organization{" "}
+                    <img src={filter} alt="filter" onClick={handleFilterForm} />
                   </h4>
+                  {filterForm && (
+                    <div className="filter-box">
+                      <div className="input">
+                        <label>Organization</label>
+                        <select className="org">
+                          <option>Select</option>
+                        </select>
+                      </div>
+                      <div className="input">
+                        <label>Username</label>
+                        <input type="text" placeholder="User" />
+                      </div>
+                      <div className="input">
+                        <label>Email</label>
+                        <input type="email" placeholder="Email" />
+                      </div>
+
+                      <div className="input">
+                        <label>Date</label>
+                        <input type="date" placeholder="Date" />
+                      </div>
+                      <div className="input">
+                        <label>Phone Number</label>
+                        <input type="number" placeholder="Phone Number" />
+                      </div>
+                      <div className="input">
+                        <label>Status</label>
+                        <select className="org" placeholder="Status">
+                          <option>Status</option>
+                        </select>
+                      </div>
+                      <div className="btn-holder">
+                        <button>Reset</button>
+                        <button onClick={handleFilterFormClose}>Filter</button>
+                      </div>
+                    </div>
+                  )}
                 </th>
                 <th>
-                  {" "}
                   <h4>
                     Username <img src={filter} alt="filter" />
                   </h4>
@@ -60,7 +106,6 @@ function Dashboard() {
                 </th>
                 <th>
                   <h4>
-                    {" "}
                     Phone Number <img src={filter} alt="filter" />
                   </h4>
                 </th>
@@ -78,10 +123,11 @@ function Dashboard() {
             </thead>
             <tbody>
               {usersInpage.map((item, index) => {
-                return <UserTable key={index} item={item} />;
+                return <UserTable key={index} item={item} indexes={index} />;
               })}
             </tbody>
           </table>
+          <Pagination />
         </div>
       </Layout>
     </>
