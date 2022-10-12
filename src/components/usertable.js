@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import picker from "../assets/icons/main/picker.svg";
 import "../styles/dashboard.scss";
 import { format } from "date-fns";
 import AppContext from "../context/context";
+import { Link } from "react-router-dom";
 
-function UserTable({ item, indexes }) {
+function UserTable({ item, active }) {
   const organization = item.orgName.replace(/[. -]/g, " ");
   const userName = item.userName.replace(/[. - _]/g, " ");
   const phone = item.phoneNumber.replace(/[. x () -]/g, "");
@@ -12,23 +13,7 @@ function UserTable({ item, indexes }) {
   const timeNow = format(timeLet, "MMM d  ',' yyyy");
   const timeD = format(timeLet, "h':'mm a");
   const createdAt = timeNow + " " + timeD;
-  const { users } = useContext(AppContext);
-  const [userId, setUserId] = useState("");
-  const newIndex = (indexes + 1).toString();
-  const [sideNav, setSideNav] = useState(false);
-  const handleUserId = (e) => {
-    setSideNav(!sideNav);
-    const newList = Array.from(users);
-    const index = newList.findIndex((user) => {
-      return user.id === item.id;
-    });
-    const newId = newList[index].id.toString();
-    setUserId(newId);
-    console.log(newIndex);
-    if (item.id === userId && !sideNav) setSideNav(true);
-    else if (item.id === userId && sideNav) setSideNav(false);
-  };
-
+  const { handleSideNavClick } = useContext(AppContext);
   return (
     <>
       <tr>
@@ -39,18 +24,16 @@ function UserTable({ item, indexes }) {
         <td>{createdAt}</td>
         <td>Inactive</td>
         <td>
-          <img src={picker} alt="picker" onClick={handleUserId} />
-          {sideNav && (
-            <div
-              className="sideNav"
-              id={item.id}
-              style={{
-                display: item.id === userId ? "flex" : "none!important",
-              }}
-            >
+          <div className="" onClick={(e) => handleSideNavClick(e, item.id)}>
+            <img src={picker} alt="picker" />
+          </div>
+          {active && (
+            <div className="sideNav" id={item.id}>
               <p>View Details</p>
               <p>Blacklist Users</p>
-              <p>Activate User</p>
+              <Link to="/dashboard/user_details">
+                <p>Activate User</p>
+              </Link>
             </div>
           )}
         </td>

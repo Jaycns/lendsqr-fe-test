@@ -1,5 +1,6 @@
 import Login from "../pages/login";
 import Dashboard from "../pages/dashboard";
+import UserDetails from "../pages/userdetails";
 
 export const RouteMap = [
   {
@@ -9,5 +10,9 @@ export const RouteMap = [
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/dashboard/user_details",
+    element: <UserDetails />,
   },
 ];

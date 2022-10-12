@@ -1,12 +1,13 @@
 import React, { useContext, useCallback } from "react";
-import drop from "../assets/icons/main/pagination/drop.svg";
+// import drop from "../assets/icons/main/pagination/drop.svg";
 import next from "../assets/icons/main/pagination/next btn.svg";
 import prev from "../assets/icons/main/pagination/prev btn.svg";
 import AppContext from "../context/context";
 import "../styles/dashboard.scss";
 
 function Pagination() {
-  const { setCurrentPage, currentPage, usersPerPage } = useContext(AppContext);
+  const { setCurrentPage, currentPage, usersPerPage, handleUsersPerPage } =
+    useContext(AppContext);
   const pages = Math.ceil(100 / usersPerPage);
   const pageArr = [];
   for (let i = 1; i <= pages; i++) pageArr.push(i);
@@ -32,9 +33,12 @@ function Pagination() {
       <div className="showing">
         <p>
           Showing{" "}
-          <span>
-            100 <img src={drop} alt="drop" />
-          </span>{" "}
+          <select onChange={handleUsersPerPage} className="span">
+            <option id="9">9</option>
+            <option id="20">20</option>
+            <option id="50">50</option>
+            <option id="100">100</option>
+          </select>{" "}
           out of 100
         </p>
       </div>

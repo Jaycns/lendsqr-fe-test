@@ -11,20 +11,22 @@ import AppContext from "../context/context";
 import Pagination from "../components/pagination";
 
 function Dashboard() {
-  const { usersInpage } = useContext(AppContext);
+  const { usersInpage, clickId } = useContext(AppContext);
+
   const [filterForm, setFilterForm] = useState(false);
   const handleFilterForm = useCallback(
     () => setFilterForm(true),
     [setFilterForm]
   );
   const handleFilterFormClose = useCallback(
-    () => setFilterForm(false),
-    [setFilterForm]
+    () => filterForm && setFilterForm(false),
+    [setFilterForm, filterForm]
   );
+
   return (
     <>
       <Layout>
-        <div className="main">
+        <div className="main" onClick={handleFilterFormClose}>
           <h1>Users</h1>
           <div className="flex-box">
             <div className="card">
@@ -123,7 +125,14 @@ function Dashboard() {
             </thead>
             <tbody>
               {usersInpage.map((item, index) => {
-                return <UserTable key={index} item={item} indexes={index} />;
+                return (
+                  <UserTable
+                    key={index}
+                    item={item}
+                    indexes={index}
+                    active={clickId === item.id}
+                  />
+                );
               })}
             </tbody>
           </table>
