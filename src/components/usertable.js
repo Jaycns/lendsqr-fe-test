@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
 import picker from "../assets/icons/main/picker.svg";
+import user from "../assets/icons/main/user.svg";
+import deleteIcon from "../assets/icons/main/delete.svg";
+import view from "../assets/icons/main/view.svg";
 import "../styles/dashboard.scss";
 import { format } from "date-fns";
 import AppContext from "../context/context";
@@ -13,7 +16,7 @@ function UserTable({ item, active }) {
   const timeNow = format(timeLet, "MMM d  ',' yyyy");
   const timeD = format(timeLet, "h':'mm a");
   const createdAt = timeNow + " " + timeD;
-  const { handleSideNavClick } = useContext(AppContext);
+  const { handleSideNavClick, handleActive } = useContext(AppContext);
   return (
     <>
       <tr>
@@ -30,10 +33,19 @@ function UserTable({ item, active }) {
           {active && (
             <div className="sideNav" id={item.id}>
               <Link to="/dashboard/user_details">
-                <p>View Details</p>
+                <div className="holder">
+                  <img src={view} alt="user" />
+                  <p onClick={handleActive}>View Details</p>
+                </div>
               </Link>
-              <p>Blacklist Users</p>
-              <p>Activate User</p>
+              <div className="holder">
+                <img src={deleteIcon} alt="delete" />
+                <p>Blacklist Users</p>
+              </div>
+              <div className="holder">
+                <img src={user} alt="view" />
+                <p>Activate User</p>
+              </div>
             </div>
           )}
         </td>

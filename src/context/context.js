@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useCallback } from "react";
 const AppContext = createContext();
 export const AppProvider = (props) => {
   //users data fetching
@@ -20,18 +20,21 @@ export const AppProvider = (props) => {
   }, []);
   //handling userDetails
   const [clickId, setClickId] = useState(0);
-  const [userProfile, setUserProfile] = useState([]);
-  const handleUserProfile = (data) => {
-    setUserProfile(users.filter((item) => clickId === item.id));
-  };
   //handling sideNav show
   const handleSideNavClick = (e, data) => {
     e.stopPropagation();
     setClickId(data);
   };
+  const handleSideNavClose = () => {
+    clickId !== null && setClickId(null);
+  };
+  // const [active, setActive] = useState(false);
+  // const handleActive = () => {
+  //   setActive(true);
+  // };
   // useEffect(() => {
   //   document.addEventListener("click", () => {
-  //     clickId !== null && setClickId(null);
+  //     if (clickId !== null && active) setClickId(null);
   //   });
   //   return () => {
   //     document.removeEventListener("click", () => setClickId(null));
@@ -39,6 +42,23 @@ export const AppProvider = (props) => {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
 
+  const [filterForm, setFilterForm] = useState(false);
+  const handleFilterForm = () => {
+    setFilterForm(!filterForm);
+  };
+
+  const handleFilterFormClose = useCallback(() => {
+    filterForm && setFilterForm(false);
+  }, [setFilterForm, filterForm]);
+  useEffect(() => {
+    document.addEventListener("click", () => {
+      filterForm && setFilterForm(false);
+    });
+    return () => {
+      document.removeEventListener("click", () => setFilterForm(false));
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   //handling pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage, setUsersPerPage] = useState(9);
@@ -56,7 +76,9 @@ export const AppProvider = (props) => {
     setCurrentPage,
     handleUsersPerPage,
     handleSideNavClick,
-    handleUserProfile,
+    handleSideNavClose,
+    handleFilterForm,
+    handleFilterFormClose,
   };
   return (
     <AppContext.Provider
@@ -66,7 +88,7 @@ export const AppProvider = (props) => {
         usersInpage,
         users,
         clickId,
-        userProfile,
+        filterForm,
         ...stateActions,
       }}
     >

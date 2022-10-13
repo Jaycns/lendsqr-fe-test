@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap");
+.cover {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+}
 .topNav {
   position: fixed;
   z-index: 3;
@@ -287,12 +293,18 @@
         .sideNav {
           position: absolute;
           background-color: white;
-          width: 10rem;
+          width: 11.25rem;
           top: 0;
           display: flex;
+          z-index: 6;
           gap: 1.25rem;
           padding: 1.25rem;
           flex-direction: column;
+          border: 1px solid rgba(84, 95, 125, 0.04);
+          .holder {
+            display: flex;
+            gap: 0.5rem;
+          }
         }
       }
       tr {

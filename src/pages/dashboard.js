@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from "react";
+import React, { useContext } from "react";
 import "../styles/dashboard.scss";
 import Layout from "../components/layout";
 import user from "../assets/icons/main/people.svg";
@@ -12,20 +12,19 @@ import AppContext from "../context/context";
 import Pagination from "../components/pagination";
 
 function Dashboard() {
-  const { usersInpage, clickId } = useContext(AppContext);
-
-  const [filterForm, setFilterForm] = useState(false);
-  const handleFilterForm = useCallback(
-    () => setFilterForm(true),
-    [setFilterForm]
-  );
-  const handleFilterFormClose = useCallback(
-    () => filterForm && setFilterForm(false),
-    [setFilterForm, filterForm]
-  );
+  const {
+    usersInpage,
+    clickId,
+    filterForm,
+    handleFilterForm,
+    handleFilterFormClose,
+  } = useContext(AppContext);
 
   return (
     <>
+      {filterForm && (
+        <div className="cover" onClick={handleFilterFormClose}></div>
+      )}
       <Layout>
         <div className="main">
           <h1>Users</h1>
@@ -99,7 +98,7 @@ function Dashboard() {
                       </div>
                       <div className="btn-holder">
                         <button>Reset</button>
-                        <button onClick={handleFilterFormClose}>Filter</button>
+                        <button>Filter</button>
                       </div>
                     </div>
                   )}

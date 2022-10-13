@@ -74,7 +74,10 @@
         .profile-pics {
           border-radius: 50%;
           background-color: rgba(33, 63, 125, 0.16);
-          padding: 1.875rem;
+          img {
+            width: 100%;
+            border-radius: 50%;
+          }
         }
         .user-name {
           display: flex;
