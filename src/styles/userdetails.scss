@@ -2,6 +2,13 @@
   color: #545f7d;
   .container {
     width: 74.6rem;
+    @media (max-width: 1400px) {
+      width: 64.8rem;
+    }
+    @media (max-width: 768px) {
+      padding-right: 2rem;
+      width: 58rem;
+    }
   }
   .back {
     display: flex;

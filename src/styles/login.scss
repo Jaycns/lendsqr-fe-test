@@ -30,6 +30,23 @@
       margin-left: -2rem;
     }
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    .img-box {
+      .logo {
+        width: 80px;
+        margin: 2.25rem;
+      }
+      .canvas {
+        width: 280px;
+        margin-left: 0;
+        margin: auto;
+      }
+    }
+    .flex-box {
+      padding: 2.25rem;
+    }
+  }
   .login-box {
     width: 32rem;
     color: #213f7d;
@@ -91,6 +108,22 @@
       span {
         margin-left: -1rem;
         cursor: pointer;
+      }
+    }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 24px;
+      }
+      p {
+        font-size: 16px;
+      }
+      form {
+        margin-top: 2rem;
+        .form-input {
+          span {
+            margin-left: -2rem;
+          }
+        }
       }
     }
   }

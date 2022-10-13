@@ -32,7 +32,7 @@ function UserDetails() {
               </div>
             </div>
             {userData.map((item, index) => {
-              return <User item={item} index={index} />;
+              return <User item={item} index={index} key={index} />;
             })}
           </div>
         </div>

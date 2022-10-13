@@ -10,7 +10,7 @@ function User({ item, index }) {
   return (
     <>
       <div className="user-header-box">
-        <div className="profile-box" key={index}>
+        <div className="profile-box">
           <div className="profile">
             <div className="profile-pics">
               <img src={item.profile.avatar} alt="avatar" />

@@ -26,7 +26,7 @@ export const AppProvider = (props) => {
     setClickId(data);
   };
   const handleSideNavClose = () => {
-    clickId !== null && setClickId(null);
+    clickId !== null && setClickId(0);
   };
   // const [active, setActive] = useState(false);
   // const handleActive = () => {
@@ -49,7 +49,8 @@ export const AppProvider = (props) => {
 
   const handleFilterFormClose = useCallback(() => {
     filterForm && setFilterForm(false);
-  }, [setFilterForm, filterForm]);
+    clickId !== 0 && setClickId(0);
+  }, [setFilterForm, filterForm, clickId]);
   useEffect(() => {
     document.addEventListener("click", () => {
       filterForm && setFilterForm(false);

@@ -1,12 +1,13 @@
 import React from "react";
 import Sidebar from "./sidebar";
 import TopNav from "./topNav";
+import "../styles/dashboard.scss";
 
 function Layout({ children }) {
   return (
     <>
-      <Sidebar />
       <TopNav />
+      <Sidebar />
       <main>{children}</main>
     </>
   );
