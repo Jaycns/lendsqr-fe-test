@@ -1,5 +1,5 @@
 import React, { useContext, useCallback } from "react";
-// import drop from "../assets/icons/main/pagination/drop.svg";
+import drop from "../assets/icons/main/pagination/drop.svg";
 import next from "../assets/icons/main/pagination/next btn.svg";
 import prev from "../assets/icons/main/pagination/prev btn.svg";
 import AppContext from "../context/context";
@@ -33,12 +33,16 @@ function Pagination() {
       <div className="showing">
         <p>
           Showing{" "}
-          <select onChange={handleUsersPerPage} className="span">
+          <select
+            onChange={handleUsersPerPage}
+            className="span"
+            style={{ backgroundImage: `url(${drop})` }}
+          >
             <option id="9">9</option>
             <option id="20">20</option>
             <option id="50">50</option>
             <option id="100">100</option>
-          </select>{" "}
+          </select>
           out of 100
         </p>
       </div>

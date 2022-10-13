@@ -29,11 +29,11 @@ function UserTable({ item, active }) {
           </div>
           {active && (
             <div className="sideNav" id={item.id}>
-              <p>View Details</p>
-              <p>Blacklist Users</p>
               <Link to="/dashboard/user_details">
-                <p>Activate User</p>
+                <p>View Details</p>
               </Link>
+              <p>Blacklist Users</p>
+              <p>Activate User</p>
             </div>
           )}
         </td>

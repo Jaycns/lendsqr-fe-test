@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/userdetails.scss";
+import { Link } from "react-router-dom";
 import Layout from "../components/layout";
 import back from "../assets/icons/user/back.svg";
 import star from "../assets/icons/user/star 1.svg";
@@ -12,10 +13,12 @@ function UserDetails() {
       <Layout>
         <div className="main">
           <div className="container">
-            <div className="back">
-              <img src={back} alt="back" />
-              <p>Back to Users</p>
-            </div>
+            <Link to="/dashboard">
+              <div className="back">
+                <img src={back} alt="back" />
+                <p>Back to Users</p>
+              </div>
+            </Link>
             <div className="title-box">
               <h2>User Details</h2>
               <div className="btn-holder">

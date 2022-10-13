@@ -1,9 +1,11 @@
 .login-container {
   min-height: 100vh;
   display: flex;
+  background-color: #fff;
   .img-box {
     display: flex;
     flex-direction: column;
+    background-color: #fff;
     gap: 2.7rem;
     flex-basis: 50%;
     .logo {
@@ -18,8 +20,8 @@
   .flex-box {
     display: flex;
     justify-content: flex-start;
-    // border: 2px solid rgba(84, 95, 125, 0.15);
-    box-shadow: 0px 0px 50px rgba(84, 95, 125, 0.07);
+    background-color: #fff;
+    box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
     height: 100vh;
     flex-basis: 50%;
     padding: 12rem 6rem;

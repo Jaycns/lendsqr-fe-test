@@ -6,6 +6,7 @@ import activeUser from "../assets/icons/main/active user.svg";
 import loans from "../assets/icons/main/user loan.svg";
 import savings from "../assets/icons/main/savings.svg";
 import filter from "../assets/icons/main/filter.svg";
+import drop from "../assets/icons/main/pagination/drop.svg";
 import UserTable from "../components/usertable";
 import AppContext from "../context/context";
 import Pagination from "../components/pagination";
@@ -26,7 +27,7 @@ function Dashboard() {
   return (
     <>
       <Layout>
-        <div className="main" onClick={handleFilterFormClose}>
+        <div className="main">
           <h1>Users</h1>
           <div className="flex-box">
             <div className="card">
@@ -62,7 +63,10 @@ function Dashboard() {
                     <div className="filter-box">
                       <div className="input">
                         <label>Organization</label>
-                        <select className="org">
+                        <select
+                          className="org"
+                          style={{ backgroundImage: `url(${drop})` }}
+                        >
                           <option>Select</option>
                         </select>
                       </div>
@@ -85,7 +89,11 @@ function Dashboard() {
                       </div>
                       <div className="input">
                         <label>Status</label>
-                        <select className="org" placeholder="Status">
+                        <select
+                          className="org"
+                          placeholder="Status"
+                          style={{ backgroundImage: `url(${drop})` }}
+                        >
                           <option>Status</option>
                         </select>
                       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/dashboard.scss";
+import { Link } from "react-router-dom";
 import briefcase from "../assets/icons/sidebar/briefcase 1.svg";
 import dropdown from "../assets/icons/sidebar/np_next.svg";
 import user from "../assets/icons/sidebar/user-friends 1.svg";
@@ -129,10 +130,13 @@ function Sidebar() {
           <img src={wheel} alt="user" />
           <p>Systems Messages</p>
         </div>
-        <div className="nav logout">
-          <img src={logout} alt="user" />
-          <p>Logout</p>
-        </div>
+        <Link to="/">
+          <div className="nav logout">
+            <img src={logout} alt="user" />
+            <p>Logout</p>
+          </div>
+        </Link>
+        <p className="nav version">v1.2.0</p>
       </div>
     </div>
   );
