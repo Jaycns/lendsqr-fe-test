@@ -18,24 +18,26 @@ export const AppProvider = (props) => {
       console.log(err);
     }
   }, []);
-
-  //handling sideNav show
+  //handling userDetails
   const [clickId, setClickId] = useState(0);
+  const [userProfile, setUserProfile] = useState([]);
+  const handleUserProfile = (data) => {
+    setUserProfile(users.filter((item) => clickId === item.id));
+  };
+  //handling sideNav show
   const handleSideNavClick = (e, data) => {
     e.stopPropagation();
     setClickId(data);
-    console.log({ data });
   };
-  useEffect(() => {
-    document.addEventListener("click", () => {
-      clickId !== null && setClickId(null);
-    });
-    return () => {
-      document.removeEventListener("click", () => setClickId(null));
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-//handling filterForm popup
+  // useEffect(() => {
+  //   document.addEventListener("click", () => {
+  //     clickId !== null && setClickId(null);
+  //   });
+  //   return () => {
+  //     document.removeEventListener("click", () => setClickId(null));
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   //handling pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,6 +56,7 @@ export const AppProvider = (props) => {
     setCurrentPage,
     handleUsersPerPage,
     handleSideNavClick,
+    handleUserProfile,
   };
   return (
     <AppContext.Provider
@@ -63,6 +66,7 @@ export const AppProvider = (props) => {
         usersInpage,
         users,
         clickId,
+        userProfile,
         ...stateActions,
       }}
     >
