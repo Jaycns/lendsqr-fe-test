@@ -101,6 +101,10 @@
       color: #213f7d;
     }
   }
+  .nav.logout {
+    border-top: 1px solid rgba(33, 63, 125, 0.06);
+    margin-top: 1.875rem;
+  }
   .nav.active {
     border-left: 3px solid #39cdcc;
     background-color: rgba(57, 205, 204, 0.06);
@@ -121,7 +125,7 @@
   }
 }
 .main {
-  padding: 10rem 21.4rem;
+  padding: 10rem 22rem;
   padding-right: 3.75rem;
   width: 100%;
   background: rgba(229, 229, 229, 0.1);

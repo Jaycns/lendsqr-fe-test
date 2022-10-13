@@ -21,6 +21,8 @@ import usercog from "../assets/icons/sidebar/user-cog 1.svg";
 import scroll from "../assets/icons/sidebar/scroll 1.svg";
 import slider from "../assets/icons/sidebar/sliders-h 1.svg";
 import clipboard from "../assets/icons/sidebar/clipboard-list 1.svg";
+import wheel from "../assets/icons/sidebar/tire 1.svg";
+import logout from "../assets/icons/sidebar/sign-out 1.svg";
 function Sidebar() {
   return (
     <div className="sidebar">
@@ -122,6 +124,14 @@ function Sidebar() {
         <div className="nav">
           <img src={clipboard} alt="user" />
           <p>Audit Logs</p>
+        </div>
+        <div className="nav">
+          <img src={wheel} alt="user" />
+          <p>Systems Messages</p>
+        </div>
+        <div className="nav logout">
+          <img src={logout} alt="user" />
+          <p>Logout</p>
         </div>
       </div>
     </div>
