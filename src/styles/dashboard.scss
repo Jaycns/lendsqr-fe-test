@@ -34,13 +34,15 @@
     width: 100%;
     margin-left: 10.5rem;
     @media (max-width: 768px) {
-      margin-left: 6rem;
+      margin-left: 3rem;
     }
   }
   .search-box {
     width: 25rem;
     display: flex;
-
+    @media (max-width: 768px) {
+      width: 20rem;
+    }
     input {
       padding: 0.75rem 1.25rem;
       width: 90%;
