@@ -47,7 +47,7 @@ function UserTable({ item, active }) {
           </div>
           {active && (
             <div className="sideNav" id={item.id}>
-              <Link to="/dashboard/user_details">
+              <Link to={`/dashboard/user_details/${item.id}`}>
                 <div className="holder">
                   <img src={view} alt="user" />
                   <p onClick={handleActive}>View Details</p>

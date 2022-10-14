@@ -12,7 +12,7 @@ export const RouteMap = [
     element: <Dashboard />,
   },
   {
-    path: "/dashboard/user_details",
+    path: "/dashboard/user_details/:id",
     element: <UserDetails />,
   },
 ];

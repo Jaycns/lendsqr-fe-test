@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "../styles/userdetails.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Layout from "../components/layout";
 import User from "../components/user";
 import back from "../assets/icons/user/back.svg";
@@ -9,10 +9,11 @@ import back from "../assets/icons/user/back.svg";
 import AppContext from "../context/context";
 
 function UserDetails() {
-  const { clickId, users, handleSideNavClose } = useContext(AppContext);
+  const {users, handleSideNavClose } = useContext(AppContext);
+  const params = useParams();
   const data = Array.from(users);
-  const userData = data.filter((item) => clickId === item.id);
-
+  const userData = data.filter((item) => params.id === item.id);
+  console.log({ Params: params });
   return (
     <>
       <Layout>
