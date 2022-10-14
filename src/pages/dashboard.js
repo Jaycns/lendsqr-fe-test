@@ -22,10 +22,11 @@ function Dashboard() {
 
   return (
     <>
-      {filterForm ||
-        (clickId !== 0 && (
-          <div className="cover" onClick={handleFilterFormClose}></div>
-        ))}
+      {filterForm || clickId !== 0 ? (
+        <div className="cover" onClick={handleFilterFormClose}></div>
+      ) : (
+        <></>
+      )}
       <Layout>
         <div className="main">
           <h1>Users</h1>
