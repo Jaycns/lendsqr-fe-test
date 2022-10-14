@@ -15,6 +15,11 @@ function UserTable({ item, active }) {
   const timeLet = new Date(item.createdAt);
   const timeNow = format(timeLet, "MMM d  ',' yyyy");
   const timeD = format(timeLet, "h':'mm a");
+  const num = item.id.includes("2") ? true : false;
+  const blackNum =
+    item.id.includes("3") || item.id.includes("7") ? true : false;
+  const activeNum =
+    item.id.includes("5") || item.id.includes("6") ? true : false;
   const createdAt = timeNow + " " + timeD;
   const { handleSideNavClick, handleActive } = useContext(AppContext);
   return (
@@ -26,7 +31,15 @@ function UserTable({ item, active }) {
         <td>{phone}</td>
         <td>{createdAt}</td>
         <td className="activity">
-          <p>Inactive</p>
+          {num ? (
+            <p className="pending">Pending</p>
+          ) : blackNum ? (
+            <p className="blacklist">BlackListed</p>
+          ) : activeNum ? (
+            <p className="active">Active</p>
+          ) : (
+            <p className="inactive">Inactive</p>
+          )}
         </td>
         <td>
           <div className="icon" onClick={(e) => handleSideNavClick(e, item.id)}>
