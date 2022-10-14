@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/dashboard.scss";
 import Layout from "../components/layout";
 import user from "../assets/icons/main/people.svg";
@@ -6,6 +6,7 @@ import activeUser from "../assets/icons/main/active user.svg";
 import loans from "../assets/icons/main/user loan.svg";
 import savings from "../assets/icons/main/savings.svg";
 import filter from "../assets/icons/main/filter.svg";
+import calendar from "../assets/icons/main/calendar.svg";
 import drop from "../assets/icons/main/pagination/drop.svg";
 import UserTable from "../components/usertable";
 import AppContext from "../context/context";
@@ -19,7 +20,13 @@ function Dashboard() {
     handleFilterForm,
     handleFilterFormClose,
   } = useContext(AppContext);
-
+  const [focused, setFocused] = useState(false);
+  const handleFocus = () => {
+    setFocused(true);
+  };
+  const handleBlur = () => {
+    setFocused(false);
+  };
   return (
     <>
       {filterForm || clickId !== 0 ? (
@@ -82,7 +89,15 @@ function Dashboard() {
 
                       <div className="input">
                         <label>Date</label>
-                        <input type="date" placeholder="Date" />
+                        <div className="input-container">
+                          <input
+                            type={focused ? "date" : "text"}
+                            onBlur={handleBlur}
+                            onFocus={handleFocus}
+                            placeholder="Date"
+                          />
+                          {!focused && <img src={calendar} alt="calendar" />}
+                        </div>
                       </div>
                       <div className="input">
                         <label>Phone Number</label>

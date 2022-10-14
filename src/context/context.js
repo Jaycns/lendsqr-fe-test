@@ -18,9 +18,8 @@ export const AppProvider = (props) => {
       console.log(err);
     }
   }, []);
-  //handling userDetails
-  const [clickId, setClickId] = useState(0);
   //handling sideNav show
+  const [clickId, setClickId] = useState(0);
   const handleSideNavClick = (e, data) => {
     e.stopPropagation();
     setClickId(data);
@@ -28,38 +27,17 @@ export const AppProvider = (props) => {
   const handleSideNavClose = () => {
     clickId !== null && setClickId(0);
   };
-  // const [active, setActive] = useState(false);
-  // const handleActive = () => {
-  //   setActive(true);
-  // };
-  // useEffect(() => {
-  //   document.addEventListener("click", () => {
-  //     if (clickId !== null && active) setClickId(null);
-  //   });
-  //   return () => {
-  //     document.removeEventListener("click", () => setClickId(null));
-  //   };
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
+  //handling filter-box show
   const [filterForm, setFilterForm] = useState(false);
   const handleFilterForm = () => {
     setFilterForm(!filterForm);
   };
-
   const handleFilterFormClose = useCallback(() => {
     filterForm && setFilterForm(false);
     clickId !== 0 && setClickId(0);
   }, [setFilterForm, filterForm, clickId]);
-  useEffect(() => {
-    document.addEventListener("click", () => {
-      filterForm && setFilterForm(false);
-    });
-    return () => {
-      document.removeEventListener("click", () => setFilterForm(false));
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
   //handling pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage, setUsersPerPage] = useState(9);

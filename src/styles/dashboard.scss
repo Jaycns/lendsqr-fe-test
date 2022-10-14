@@ -1,13 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap");
 .cover {
   height: 100vh;
-  width: 100%;
+  width: 100rem;
   position: fixed;
   z-index: 5;
   right: 0;
-  @media (max-width: 768px) {
-    width: 100rem !important;
-  }
 }
 .topNav {
   position: fixed;
@@ -258,6 +255,13 @@
             font-size: 14px;
             font-weight: 400;
           }
+          .input-container {
+            display: flex;
+            cursor: pointer;
+            img {
+              margin-left: -2rem;
+            }
+          }
           input,
           select {
             width: 100%;
@@ -342,6 +346,9 @@
           padding: 1.25rem;
           flex-direction: column;
           border: 1px solid rgba(84, 95, 125, 0.04);
+          @media (max-width: 768px) {
+            transform: translateX(-40%);
+          }
           .holder {
             display: flex;
             gap: 0.5rem;
