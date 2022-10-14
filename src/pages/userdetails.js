@@ -13,7 +13,6 @@ function UserDetails() {
   const params = useParams();
   const data = Array.from(users);
   const userData = data.filter((item) => params.id === item.id);
-  console.log({ Params: params });
   return (
     <>
       <Layout>
