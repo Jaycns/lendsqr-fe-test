@@ -45,6 +45,7 @@ export const AppProvider = (props) => {
   const handleUsersPerPage = (e) => {
     const optionValue = Number(e.target.value);
     setUsersPerPage(optionValue);
+    setCurrentPage(1);
   };
   const lastIndex = currentPage * usersPerPage;
   const initialIndex = lastIndex - usersPerPage;
