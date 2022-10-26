@@ -11,15 +11,11 @@ import drop from "../assets/icons/main/pagination/drop.svg";
 import UserTable from "../components/usertable";
 import AppContext from "../context/context";
 import Pagination from "../components/pagination";
+import { motion } from "framer-motion";
 
 function Dashboard() {
-  const {
-    usersInpage,
-    clickId,
-    filterForm,
-    handleFilterForm,
-    handleFilterFormClose,
-  } = useContext(AppContext);
+  const { usersInpage, clickId, filterForm, handleFilterForm } =
+    useContext(AppContext);
   const [focused, setFocused] = useState(false);
   const handleFocus = () => {
     setFocused(true);
@@ -27,17 +23,68 @@ function Dashboard() {
   const handleBlur = () => {
     setFocused(false);
   };
+  const containerVariant = {
+    hidden: {
+      opacity: 0,
+      x: "100vw",
+    },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.3,
+        delay: 0.5,
+        type: "spring",
+        stiffness: 80,
+        when: "beforeChildren",
+        staggerChildren: 1,
+        mass: 0.4,
+        damping: 8,
+      },
+    },
+  };
+  const childVariant = {
+    hidden: {
+      opacity: 0,
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        delay: 0.8,
+      },
+    },
+  };
+  const tableVariant = {
+    hidden: {
+      opacity: 0,
+      y: "120vw",
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: 1,
+      },
+    },
+  };
   return (
     <>
-      {filterForm || clickId !== 0 ? (
-        <div className="cover" onClick={handleFilterFormClose}></div>
-      ) : (
-        <></>
-      )}
       <Layout>
-        <div className="main">
+        <motion.div
+          variants={containerVariant}
+          initial="hidden"
+          animate="show"
+          className="main"
+        >
           <h1>Users</h1>
-          <div className="flex-box">
+          <motion.div
+            variants={childVariant}
+            initial="hidden"
+            animate="show"
+            className="flex-box"
+          >
             <div className="card">
               <img src={user} alt="users" />
               <h4>Users</h4>
@@ -58,110 +105,115 @@ function Dashboard() {
               <h4>Users with savings</h4>
               <h2>102,453</h2>
             </div>
-          </div>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>
-                  <h4>
-                    Organization{" "}
-                    <img src={filter} alt="filter" onClick={handleFilterForm} />
-                  </h4>
-                  {filterForm && (
-                    <div className="filter-box">
-                      <div className="input">
-                        <label>Organization</label>
-                        <select
-                          className="org"
-                          style={{ backgroundImage: `url(${drop})` }}
-                        >
-                          <option>Select</option>
-                        </select>
-                      </div>
-                      <div className="input">
-                        <label>Username</label>
-                        <input type="text" placeholder="User" />
-                      </div>
-                      <div className="input">
-                        <label>Email</label>
-                        <input type="email" placeholder="Email" />
-                      </div>
+          </motion.div>
+          <motion.div variants={tableVariant} initial="hidden" animate="show">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>
+                    <div className="" onClick={(e) => handleFilterForm(e)}>
+                      <h4>
+                        Organization <img src={filter} alt="filter" />
+                      </h4>
+                      {filterForm && (
+                        <div className="filter-box">
+                          <div className="input">
+                            <label>Organization</label>
+                            <select
+                              className="org"
+                              style={{ backgroundImage: `url(${drop})` }}
+                            >
+                              <option>Select</option>
+                            </select>
+                          </div>
+                          <div className="input">
+                            <label>Username</label>
+                            <input type="text" placeholder="User" />
+                          </div>
+                          <div className="input">
+                            <label>Email</label>
+                            <input type="email" placeholder="Email" />
+                          </div>
 
-                      <div className="input">
-                        <label>Date</label>
-                        <div className="input-container">
-                          <input
-                            type={focused ? "date" : "text"}
-                            onBlur={handleBlur}
-                            onFocus={handleFocus}
-                            placeholder="Date"
-                          />
-                          {!focused && <img src={calendar} alt="calendar" />}
+                          <div className="input">
+                            <label>Date</label>
+                            <div className="input-container">
+                              <input
+                                type={focused ? "date" : "text"}
+                                onBlur={handleBlur}
+                                onFocus={handleFocus}
+                                placeholder="Date"
+                              />
+                              {!focused && (
+                                <img src={calendar} alt="calendar" />
+                              )}
+                            </div>
+                          </div>
+                          <div className="input">
+                            <label>Phone Number</label>
+                            <input type="number" placeholder="Phone Number" />
+                          </div>
+                          <div className="input">
+                            <label>Status</label>
+                            <select
+                              className="org"
+                              placeholder="Status"
+                              style={{ backgroundImage: `url(${drop})` }}
+                            >
+                              <option>Status</option>
+                            </select>
+                          </div>
+                          <div className="btn-holder">
+                            <button>Reset</button>
+                            <button>Filter</button>
+                          </div>
                         </div>
-                      </div>
-                      <div className="input">
-                        <label>Phone Number</label>
-                        <input type="number" placeholder="Phone Number" />
-                      </div>
-                      <div className="input">
-                        <label>Status</label>
-                        <select
-                          className="org"
-                          placeholder="Status"
-                          style={{ backgroundImage: `url(${drop})` }}
-                        >
-                          <option>Status</option>
-                        </select>
-                      </div>
-                      <div className="btn-holder">
-                        <button>Reset</button>
-                        <button>Filter</button>
-                      </div>
+                      )}
                     </div>
-                  )}
-                </th>
-                <th>
-                  <h4>
-                    Username <img src={filter} alt="filter" />
-                  </h4>
-                </th>
-                <th>
-                  <h4>
-                    Email <img src={filter} alt="filter" />
-                  </h4>
-                </th>
-                <th>
-                  <h4>
-                    Phone Number <img src={filter} alt="filter" />
-                  </h4>
-                </th>
-                <th>
-                  <h4>
-                    Data Joined <img src={filter} alt="filter" />
-                  </h4>
-                </th>
-                <th>
-                  <h4>
-                    Status <img src={filter} alt="filter" />
-                  </h4>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {usersInpage.map((item, index) => {
-                return (
-                  <UserTable
-                    key={index}
-                    item={item}
-                    indexes={index}
-                    active={clickId === item.id}
-                  />
-                );
-              })}
-            </tbody>
-          </table>
-          <Pagination />
-        </div>
+                  </th>
+                  <th>
+                    <h4>
+                      Username <img src={filter} alt="filter" />
+                    </h4>
+                  </th>
+                  <th>
+                    <h4>
+                      Email <img src={filter} alt="filter" />
+                    </h4>
+                  </th>
+                  <th>
+                    <h4>
+                      Phone Number <img src={filter} alt="filter" />
+                    </h4>
+                  </th>
+                  <th>
+                    <h4>
+                      Data Joined <img src={filter} alt="filter" />
+                    </h4>
+                  </th>
+                  <th>
+                    <h4>
+                      Status <img src={filter} alt="filter" />
+                    </h4>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {usersInpage.map((item, index) => {
+                  return (
+                    <UserTable
+                      key={index}
+                      item={item}
+                      indexes={index}
+                      active={clickId === item.id}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
+            <Pagination />
+          </motion.div>
+        </motion.div>
       </Layout>
     </>
   );

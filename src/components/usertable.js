@@ -41,8 +41,8 @@ function UserTable({ item, active }) {
             <p className="inactive">Inactive</p>
           )}
         </td>
-        <td>
-          <div className="icon" onClick={(e) => handleSideNavClick(e, item.id)}>
+        <td onClick={(e) => handleSideNavClick(e, item.id)}>
+          <div className="icon">
             <img src={picker} alt="picker" />
           </div>
           {active && (

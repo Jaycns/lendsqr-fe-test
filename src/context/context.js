@@ -30,14 +30,22 @@ export const AppProvider = (props) => {
 
   //handling filter-box show
   const [filterForm, setFilterForm] = useState(false);
-  const handleFilterForm = () => {
-    setFilterForm(!filterForm);
+  const handleFilterForm = (e) => {
+    e.stopPropagation();
+    setFilterForm(true);
   };
   const handleFilterFormClose = useCallback(() => {
     filterForm && setFilterForm(false);
     clickId !== 0 && setClickId(0);
   }, [setFilterForm, filterForm, clickId]);
 
+  //Close modalboxes
+  useEffect(() => {
+    document.addEventListener("click", () => {
+      setFilterForm(false);
+      setClickId(null);
+    });
+  }, []);
   //handling pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage, setUsersPerPage] = useState(9);

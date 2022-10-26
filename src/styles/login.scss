@@ -110,6 +110,10 @@
         cursor: pointer;
       }
     }
+
+    .form-input.red {
+      border: 2px solid rgba(33, 63, 125, 0.9);
+    }
     @media (max-width: 768px) {
       h1 {
         font-size: 24px;

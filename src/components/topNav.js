@@ -11,7 +11,7 @@ function TopNav() {
       <img src={logo} alt="logo" className="logo" />
       <div className="flex-box">
         <div className="search-box">
-          <input type="text" placeholder="Search for anything" />
+          <input type="search" placeholder="Search for anything" />
           <div className="search-icon">
             <img src={searchIcon} alt="icon" className="icon" />
           </div>

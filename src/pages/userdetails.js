@@ -9,10 +9,11 @@ import back from "../assets/icons/user/back.svg";
 import AppContext from "../context/context";
 
 function UserDetails() {
-  const {users, handleSideNavClose } = useContext(AppContext);
+  const { users, handleSideNavClose } = useContext(AppContext);
   const params = useParams();
   const data = Array.from(users);
   const userData = data.filter((item) => params.id === item.id);
+  console.log({ params: params });
   return (
     <>
       <Layout>
