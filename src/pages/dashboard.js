@@ -42,6 +42,12 @@ function Dashboard() {
         damping: 8,
       },
     },
+    exit: {
+      x: "-100vw",
+      transition: {
+        duration: 0.5,
+      },
+    },
   };
   const childVariant = {
     hidden: {
@@ -50,7 +56,7 @@ function Dashboard() {
     show: {
       opacity: 1,
       transition: {
-        duration: 0.7,
+        duration: 1,
         delay: 0.8,
       },
     },
@@ -77,6 +83,7 @@ function Dashboard() {
           initial="hidden"
           animate="show"
           className="main"
+          exit="exit"
         >
           <h1>Users</h1>
           <motion.div

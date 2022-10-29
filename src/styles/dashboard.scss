@@ -43,7 +43,7 @@
     width: 25rem;
     display: flex;
     @media (max-width: 768px) {
-      width: 15rem;
+      width: 20rem;
       margin-right: 2rem;
     }
     input {
@@ -188,7 +188,7 @@
       padding-right: 2rem;
     }
     @media (max-width: 768px) {
-      width: 60rem;
+      width: 54rem;
       padding-right: 2rem;
     }
   }
@@ -230,7 +230,7 @@
       width: 62.8rem;
     }
     @media (max-width: 768px) {
-      width: 58rem;
+      width: 40rem;
     }
     th {
       position: relative;
@@ -406,7 +406,7 @@
       width: 62.8rem;
     }
     @media (max-width: 768px) {
-      width: 58rem;
+      width: 52rem;
     }
     .showing {
       display: flex;

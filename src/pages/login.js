@@ -2,10 +2,11 @@ import React, { useState, useCallback } from "react";
 import logo from "../assets/logo.svg";
 import canvas from "../assets/canvas.svg";
 import "../styles/login.scss";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Login() {
+  const location = useLocation();
   const [keyShown, setKeyShown] = useState(false);
   const handleKeyShown = useCallback(
     (e) => {
@@ -24,7 +25,24 @@ function Login() {
   );
   const emailValid = login.email.includes(".com") && login.email.includes("@");
   const passwordValid = login.password.length > 7;
-
+  const containerVariant = {
+    hidden: {
+      opacity: 0,
+      x: 0,
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+      },
+    },
+    exit: {
+      x: "-100vw",
+      transition: {
+        duration: 0.7,
+      },
+    },
+  };
   const btnVariant = {
     hidden: {
       x: "50vw",
@@ -33,20 +51,28 @@ function Login() {
     show: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.5, delay: 0.1, type: "spring", stiffness: 120 },
+      transition: {
+        duration: 0.5,
+        delay: 0.1,
+        type: "ease",
+      },
     },
   };
   const hoverVariant = {
     hover: {
-      background: "#15cfcf",
       scale: 1.05,
-      transition: { yoyo: 3, duration: 0.2, delay: 0.1 },
+      transition: { repeat: 2, duration: 0.3, repeatType: "reverse" },
     },
   };
-
+  console.log({ location: location });
   return (
-    <>
-      <div className="login-container">
+    <motion.div
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
+      <motion.div className="login-container">
         <div className="img-box">
           <img src={logo} alt="logo" className="logo" />
           <img src={canvas} alt="logo" className="canvas" />
@@ -82,30 +108,33 @@ function Login() {
                 </div>
               </div>
               <span>Forgot password?</span>
-              {emailValid && passwordValid && (
-                <motion.div
-                  variants={btnVariant}
-                  initial="hidden"
-                  animate="show"
-                  transition="mint"
-                >
-                  <Link to="/dashboard">
-                    <motion.button
-                      variants={hoverVariant}
-                      initial=""
-                      whileHover="hover"
-                    >
-                      Log in
-                    </motion.button>
-                  </Link>
-                </motion.div>
-              )}
+              <AnimatePresence>
+                {emailValid && passwordValid && (
+                  <motion.div
+                    variants={btnVariant}
+                    initial="hidden"
+                    animate="show"
+                    transition="mint"
+                    exit={{ x: "50vw" }}
+                  >
+                    <Link to="/dashboard">
+                      <motion.button
+                        variants={hoverVariant}
+                        initial=""
+                        whileHover="hover"
+                      >
+                        Log in
+                      </motion.button>
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </form>
           </div>
         </div>
-      </div>
-    </>
+      </motion.div>
+    </motion.div>
   );
 }
 
-export default Login;
+export default React.memo(Login);
