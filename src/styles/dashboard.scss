@@ -27,7 +27,7 @@
     padding: 2rem;
     height: 5rem;
     .logo {
-      width: 90px;
+      width: 80px;
     }
   }
   .flex-box {
@@ -37,13 +37,15 @@
     margin-left: 10.5rem;
     @media (max-width: 768px) {
       margin-left: 1.4rem;
+      justify-content: flex-start;
+      gap: 1.6rem;
     }
   }
   .search-box {
     width: 25rem;
     display: flex;
     @media (max-width: 768px) {
-      width: 12rem;
+      width: 16rem;
       margin-right: 1.4rem;
     }
     input {
@@ -55,7 +57,10 @@
       border-radius: 8px 0px 0px 8px;
       border: 1px solid rgba(33, 63, 125, 0.4);
       border-right: none;
-
+      @media (max-width: 768px) {
+        padding: 0.5rem 0.75rem;
+        font-size: 14px;
+      }
       &::placeholder {
         opacity: 0.5;
       }
@@ -237,7 +242,7 @@
       width: 62.8rem;
     }
     @media (max-width: 768px) {
-      width: 100%;
+      width: 32rem;
     }
     th {
       position: relative;
@@ -415,7 +420,7 @@
     @media (max-width: 768px) {
       width: 38rem;
       display: grid;
-      gap: 1.5rem;
+      gap: 2.5rem;
     }
     .showing {
       display: flex;
@@ -464,6 +469,7 @@
       }
       @media (max-width: 768px) {
         gap: 0.75rem;
+        margin: auto;
       }
     }
   }

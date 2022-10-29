@@ -28,11 +28,11 @@ function Dashboard() {
   const containerVariant = {
     hidden: {
       opacity: 0,
-      x: "100vw",
+      y: "40vh",
     },
     show: {
       opacity: 1,
-      x: 0,
+      y: 0,
       transition: {
         duration: 0.3,
         delay: 0.5,
