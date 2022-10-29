@@ -8,7 +8,7 @@ import { format } from "date-fns";
 import AppContext from "../context/context";
 import { Link } from "react-router-dom";
 
-function UserTable({ item, active }) {
+function UserTable({ item, active, phoneSize }) {
   const organization = item.orgName.replace(/[. -]/g, " ");
   const userName = item.userName.replace(/[. - _]/g, " ");
   const phone = item.phoneNumber.replace(/[. x () -]/g, "");
@@ -27,8 +27,13 @@ function UserTable({ item, active }) {
       <tr>
         <td>{organization}</td>
         <td>{userName}</td>
-        <td>{item.email}</td>
-        <td>{phone}</td>
+        {!phoneSize && (
+          <>
+            {" "}
+            <td>{item.email}</td>
+            <td>{phone}</td>
+          </>
+        )}
         <td>{createdAt}</td>
         <td className="activity">
           {num ? (

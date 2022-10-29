@@ -6,6 +6,7 @@ import avatar from "../assets/icons/topNav/avatar.svg";
 import dropdown from "../assets/icons/topNav/dropdown.svg";
 import "../styles/dashboard.scss";
 function TopNav() {
+  const phoneSize = window.matchMedia("(max-width: 768px)").matches;
   return (
     <div className="topNav">
       <img src={logo} alt="logo" className="logo" />
@@ -17,8 +18,12 @@ function TopNav() {
           </div>
         </div>
         <div className="right">
-          <p className="docs">Docs</p>
-          <img src={bell} alt="bell" className="bell" />
+          {!phoneSize && (
+            <>
+              <p className="docs">Docs</p>
+              <img src={bell} alt="bell" className="bell" />
+            </>
+          )}
           <img src={avatar} alt="avatar" className="avatar" />
           <p className="admin">Adedeji</p>
           <img src={dropdown} alt="icon" className="dropdown" />

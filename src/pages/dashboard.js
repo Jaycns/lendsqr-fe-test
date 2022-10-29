@@ -14,6 +14,8 @@ import Pagination from "../components/pagination";
 import { motion } from "framer-motion";
 
 function Dashboard() {
+  const phoneSize = window.matchMedia("(max-width: 768px)").matches;
+  console.log({ phoneSize: phoneSize });
   const { usersInpage, clickId, filterForm, handleFilterForm } =
     useContext(AppContext);
   const [focused, setFocused] = useState(false);
@@ -137,6 +139,7 @@ function Dashboard() {
                             <label>Username</label>
                             <input type="text" placeholder="User" />
                           </div>
+
                           <div className="input">
                             <label>Email</label>
                             <input type="email" placeholder="Email" />
@@ -183,16 +186,20 @@ function Dashboard() {
                       Username <img src={filter} alt="filter" />
                     </h4>
                   </th>
-                  <th>
-                    <h4>
-                      Email <img src={filter} alt="filter" />
-                    </h4>
-                  </th>
-                  <th>
-                    <h4>
-                      Phone Number <img src={filter} alt="filter" />
-                    </h4>
-                  </th>
+                  {!phoneSize && (
+                    <>
+                      <th>
+                        <h4>
+                          Email <img src={filter} alt="filter" />
+                        </h4>
+                      </th>
+                      <th>
+                        <h4>
+                          Phone Number <img src={filter} alt="filter" />
+                        </h4>
+                      </th>
+                    </>
+                  )}
                   <th>
                     <h4>
                       Data Joined <img src={filter} alt="filter" />
@@ -212,6 +219,7 @@ function Dashboard() {
                       key={index}
                       item={item}
                       indexes={index}
+                      phoneSize={phoneSize}
                       active={clickId === item.id}
                     />
                   );

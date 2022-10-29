@@ -27,7 +27,7 @@
     padding: 2rem;
     height: 5rem;
     .logo {
-      width: 100px;
+      width: 90px;
     }
   }
   .flex-box {
@@ -36,15 +36,15 @@
     width: 100%;
     margin-left: 10.5rem;
     @media (max-width: 768px) {
-      margin-left: 2rem;
+      margin-left: 1.4rem;
     }
   }
   .search-box {
     width: 25rem;
     display: flex;
     @media (max-width: 768px) {
-      width: 20rem;
-      margin-right: 2rem;
+      width: 12rem;
+      margin-right: 1.4rem;
     }
     input {
       padding: 0.75rem 1.25rem;
@@ -87,11 +87,15 @@
       margin-right: 10px;
     }
     @media (max-width: 768px) {
+      margin-left: -2rem;
+      justify-content: center;
       .docs {
-        margin-right: 2rem;
+        margin-right: 0rem;
+        display: none;
       }
       .bell {
-        margin-right: 1.25rem;
+        margin-right: 0rem;
+        display: none;
       }
     }
     .admin {
@@ -188,8 +192,11 @@
       padding-right: 2rem;
     }
     @media (max-width: 768px) {
-      width: 54rem;
       padding-right: 2rem;
+      display: grid;
+      width: 100%;
+      grid-template-columns: auto auto;
+      gap: 2rem;
     }
   }
   .card {
@@ -230,7 +237,7 @@
       width: 62.8rem;
     }
     @media (max-width: 768px) {
-      width: 40rem;
+      width: 100%;
     }
     th {
       position: relative;
@@ -406,7 +413,9 @@
       width: 62.8rem;
     }
     @media (max-width: 768px) {
-      width: 52rem;
+      width: 38rem;
+      display: grid;
+      gap: 1.5rem;
     }
     .showing {
       display: flex;
@@ -452,6 +461,9 @@
       }
       .img.active {
         transform: rotate(180deg);
+      }
+      @media (max-width: 768px) {
+        gap: 0.75rem;
       }
     }
   }
