@@ -26,10 +26,14 @@ export const AppProvider = (props) => {
   }, [setHamburger]);
 
   const [menu, setMenu] = useState(false);
-  const handleMenu = useCallback(() => {
-    setHamburger(!hamburger);
-    hamburger ? setMenu(false) : setMenu(true);
-  }, [hamburger]);
+  const handleMenu = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setHamburger(!hamburger);
+      hamburger ? setMenu(false) : setMenu(true);
+    },
+    [hamburger]
+  );
 
   //handling sideNav show
   const [clickId, setClickId] = useState(0);
@@ -57,6 +61,8 @@ export const AppProvider = (props) => {
     document.addEventListener("click", () => {
       setFilterForm(false);
       setClickId(null);
+      setHamburger(false);
+      setMenu(false);
     });
   }, []);
   //handling pagination

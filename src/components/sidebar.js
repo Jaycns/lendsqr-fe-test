@@ -29,7 +29,7 @@ import AppContext from "../context/context";
 function Sidebar() {
   const { menu } = useContext(AppContext);
   return (
-    <div className={`sidebar ${menu ? "active" : ""}`}>
+    <div className={`sidebar ${menu ? "" : "inactive"}`}>
       <div className="nav-group">
         <div className="nav">
           <img src={briefcase} alt="briefcase" />
