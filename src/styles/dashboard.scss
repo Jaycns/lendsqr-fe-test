@@ -92,7 +92,9 @@
       margin-right: 10px;
     }
     @media (max-width: 768px) {
-      margin-left: -2rem;
+      position: absolute;
+      right: 5%;
+      transform: translate(0%, -10%);
       justify-content: center;
       .docs {
         margin-right: 0rem;

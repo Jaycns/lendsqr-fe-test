@@ -23,8 +23,8 @@ function Login() {
     },
     [setLogin, login]
   );
-  const emailValid = login.email.includes(".com") && login.email.includes("@");
-  const passwordValid = login.password.length > 7;
+  // const emailValid = login.email.includes(".com") && login.email.includes("@");
+  // const passwordValid = login.password.length > 7;
   const containerVariant = {
     hidden: {
       opacity: 0,
@@ -108,7 +108,7 @@ function Login() {
                 </div>
               </div>
               <span>Forgot password?</span>
-              <AnimatePresence>
+              {/* <AnimatePresence>
                 {emailValid && passwordValid && (
                   <motion.div
                     variants={btnVariant}
@@ -128,6 +128,25 @@ function Login() {
                     </Link>
                   </motion.div>
                 )}
+              </AnimatePresence> */}
+              <AnimatePresence>
+                <motion.div
+                  variants={btnVariant}
+                  initial="hidden"
+                  animate="show"
+                  transition="mint"
+                  exit={{ x: "50vw" }}
+                >
+                  <Link to="/dashboard">
+                    <motion.button
+                      variants={hoverVariant}
+                      initial=""
+                      whileHover="hover"
+                    >
+                      Log in
+                    </motion.button>
+                  </Link>
+                </motion.div>
               </AnimatePresence>
             </form>
           </div>
