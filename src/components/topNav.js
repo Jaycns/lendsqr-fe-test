@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../assets/logo.svg";
 import searchIcon from "../assets/icons/topNav/search.svg";
 import bell from "../assets/icons/topNav/bell.svg";
 import avatar from "../assets/icons/topNav/avatar.svg";
 import dropdown from "../assets/icons/topNav/dropdown.svg";
 import "../styles/dashboard.scss";
+import AppContext from "../context/context";
+
 function TopNav() {
   const phoneSize = window.matchMedia("(max-width: 768px)").matches;
+  const { hamburger, handleMenu } = useContext(AppContext);
   return (
     <div className="topNav">
       <img src={logo} alt="logo" className="logo" />
+      <div
+        className={`hamburger ${hamburger ? "active" : ""}`}
+        onClick={handleMenu}
+      >
+        <span className="line1"></span>
+        <span className="line2"></span>
+        <span className="line3"></span>
+      </div>
       <div className="flex-box">
         <div className="search-box">
           <input type="search" placeholder="Search for anything" />

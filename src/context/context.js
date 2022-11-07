@@ -18,6 +18,19 @@ export const AppProvider = (props) => {
       console.log(err);
     }
   }, []);
+
+  //Handling of Hmaburger
+  const [hamburger, setHamburger] = useState(false);
+  const handleHamburger = useCallback(() => {
+    setHamburger(true);
+  }, [setHamburger]);
+
+  const [menu, setMenu] = useState(false);
+  const handleMenu = useCallback(() => {
+    setHamburger(!hamburger);
+    hamburger ? setMenu(false) : setMenu(true);
+  }, [hamburger]);
+
   //handling sideNav show
   const [clickId, setClickId] = useState(0);
   const handleSideNavClick = (e, data) => {
@@ -67,6 +80,8 @@ export const AppProvider = (props) => {
     handleSideNavClose,
     handleFilterForm,
     handleFilterFormClose,
+    handleMenu,
+    handleHamburger,
   };
   return (
     <AppContext.Provider
@@ -77,6 +92,8 @@ export const AppProvider = (props) => {
         users,
         clickId,
         filterForm,
+        hamburger,
+        menu,
         ...stateActions,
       }}
     >

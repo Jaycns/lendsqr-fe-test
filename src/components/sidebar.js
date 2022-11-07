@@ -24,9 +24,12 @@ import slider from "../assets/icons/sidebar/sliders-h 1.svg";
 import clipboard from "../assets/icons/sidebar/clipboard-list 1.svg";
 import wheel from "../assets/icons/sidebar/tire 1.svg";
 import logout from "../assets/icons/sidebar/sign-out 1.svg";
+import { useContext } from "react";
+import AppContext from "../context/context";
 function Sidebar() {
+  const { menu } = useContext(AppContext);
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${menu ? "active" : ""}`}>
       <div className="nav-group">
         <div className="nav">
           <img src={briefcase} alt="briefcase" />
